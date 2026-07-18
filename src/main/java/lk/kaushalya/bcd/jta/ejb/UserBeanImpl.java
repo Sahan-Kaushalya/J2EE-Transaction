@@ -3,6 +3,7 @@ package lk.kaushalya.bcd.jta.ejb;
 import jakarta.annotation.Resource;
 import jakarta.ejb.*;
 import jakarta.persistence.EntityManager;
+import jakarta.persistence.EntityTransaction;
 import jakarta.persistence.PersistenceContext;
 import jakarta.transaction.UserTransaction;
 import lk.kaushalya.bcd.jta.entity.User;
@@ -72,7 +73,11 @@ public class UserBeanImpl implements UserBean {
     }
 
     @Override
+    @TransactionAttribute(TransactionAttributeType.REQUIRES_NEW)
     public void transfer(Long fromAccountNo, Long toAccountNo, BigDecimal amount) {
+        EntityTransaction transaction = em.getTransaction();
+        System.out.println("transfer() called :"+System.identityHashCode(transaction));
+
       accountBean.debitAmount(fromAccountNo, amount);
       accountBean.creditAmount(toAccountNo, amount);
     }
