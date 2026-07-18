@@ -23,6 +23,11 @@ public class BankTest extends HttpServlet {
         Long toAccount = Long.parseLong(req.getParameter("toAccount"));
         BigDecimal amount = new BigDecimal(req.getParameter("amount"));
 
-        userBean.transfer(fromAccount, toAccount, amount);
+        if(fromAccount != null && toAccount != null && amount != null){
+            userBean.transfer(fromAccount, toAccount, amount);
+            resp.getWriter().write("Transfer successful");
+        }else{
+            resp.getWriter().write("Transfer failed");
+        }
     }
 }
