@@ -1,7 +1,10 @@
 package lk.kaushalya.bcd.jta.ejb;
 
 import jakarta.ejb.Stateless;
+import jakarta.ejb.TransactionAttribute;
+import jakarta.ejb.TransactionAttributeType;
 import jakarta.persistence.EntityManager;
+import jakarta.persistence.EntityTransaction;
 import jakarta.persistence.NoResultException;
 import jakarta.persistence.PersistenceContext;
 import lk.kaushalya.bcd.jta.entity.Account;
@@ -15,7 +18,10 @@ public class AccountBeanImpl implements AccountBean{
     private EntityManager em;
 
     @Override
+    @TransactionAttribute(TransactionAttributeType.REQUIRES_NEW)
     public void creditAmount(Long accountNo, BigDecimal amount) {
+        EntityTransaction transaction = em.getTransaction();
+        System.out.println("creditAmount() called :"+System.identityHashCode(transaction));
 
         try {
             Account account =  em.createNamedQuery("Account.findByAccountNo", Account.class)
@@ -32,7 +38,11 @@ public class AccountBeanImpl implements AccountBean{
     }
 
     @Override
+    @TransactionAttribute(TransactionAttributeType.REQUIRES_NEW)
     public void debitAmount(Long accountNo, BigDecimal amount) {
+        EntityTransaction transaction = em.getTransaction();
+        System.out.println("debitAmount() called :"+System.identityHashCode(transaction));
+
         try {
             Account account =  em.createNamedQuery("Account.findByAccountNo", Account.class)
                     .setParameter("accountNo", accountNo)
