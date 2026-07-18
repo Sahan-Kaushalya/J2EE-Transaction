@@ -10,6 +10,7 @@ public class Account {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    private Long accountNo;
     private String name;
     @Column(precision = 10, scale = 2)
     private BigDecimal balance;
@@ -17,7 +18,8 @@ public class Account {
     public Account() {
     }
 
-    public Account(String name, BigDecimal balance) {
+    public Account(Long accountNo, String name, BigDecimal balance) {
+        this.accountNo = accountNo;
         this.name = name;
         this.balance = balance;
     }
@@ -28,6 +30,14 @@ public class Account {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public Long getAccountNo() {
+        return accountNo;
+    }
+
+    public void setAccountNo(Long accountNo) {
+        this.accountNo = accountNo;
     }
 
     public String getName() {
