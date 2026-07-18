@@ -42,10 +42,24 @@
                     class="w-full max-w-md border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
 
-            <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+            <button type="submit" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
                 Register New User
             </button>
         </form>
+    </div>
+</div>
+
+<div class="container mx-auto mt-10">
+    <div class="bg-white p-8 rounded-lg shadow-md">
+        <img width="50" height="50" class="block mx-auto mb-3" src="https://img.icons8.com/external-dreamstale-lineal-dreamstale/32/external-bank-finance-dreamstale-lineal-dreamstale-4.png" alt="external-bank-finance-dreamstale-lineal-dreamstale-4"/>
+        <h1 class="text-4xl font-bold text-center text-gray-800 mb-6">Welcome to J2EE-BANK</h1>
+        <p class="text-center text-gray-600 mb-8">This is a simple demonstration of a J2EE application with JTA.</p>
+
+        <div class="flex justify-center">
+            <a href="bank.jsp" class="bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded">
+                Open Bank
+            </a>
+        </div>
     </div>
 </div>
 
