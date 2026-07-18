@@ -6,6 +6,10 @@ import java.math.BigDecimal;
 
 @Entity
 @Table(name = "accounts")
+@NamedQueries(value = {
+        @NamedQuery(name = "Account.findAll", query = "SELECT a FROM Account a"),
+        @NamedQuery(name = "Account.findByAccountNo", query = "SELECT a FROM Account a WHERE a.accountNo = :accountNo")
+})
 public class Account {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
