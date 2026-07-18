@@ -9,6 +9,8 @@ import lk.kaushalya.bcd.jta.entity.User;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
+import java.math.BigDecimal;
+
 @Stateless
 @TransactionManagement(TransactionManagementType.CONTAINER)
 public class UserBeanImpl implements UserBean {
@@ -18,6 +20,9 @@ public class UserBeanImpl implements UserBean {
 //
 //    @Resource
 //    private UserTransaction tr;
+
+    @EJB
+    private AccountBean accountBean;
 
     @Override
     public boolean login(String email, String password) {
@@ -64,5 +69,11 @@ public class UserBeanImpl implements UserBean {
 //        session.persist(user);
 //        transaction.commit();
         return true;
+    }
+
+    @Override
+    public void transfer(Long fromAccountNo, Long toAccountNo, BigDecimal amount) {
+      accountBean.debitAmount(fromAccountNo, amount);
+      accountBean.creditAmount(toAccountNo, amount);
     }
 }
