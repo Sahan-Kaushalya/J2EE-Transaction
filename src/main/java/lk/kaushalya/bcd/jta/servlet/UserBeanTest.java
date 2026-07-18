@@ -1,4 +1,4 @@
-package lk.kaushalya.bcd.jta;
+package lk.kaushalya.bcd.jta.servlet;
 
 import jakarta.ejb.EJB;
 import jakarta.servlet.ServletException;
