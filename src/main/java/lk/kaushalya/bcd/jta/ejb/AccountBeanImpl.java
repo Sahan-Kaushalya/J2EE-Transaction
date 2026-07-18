@@ -1,5 +1,6 @@
 package lk.kaushalya.bcd.jta.ejb;
 
+import jakarta.ejb.Stateless;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.NoResultException;
 import jakarta.persistence.PersistenceContext;
@@ -7,6 +8,7 @@ import lk.kaushalya.bcd.jta.entity.Account;
 
 import java.math.BigDecimal;
 
+@Stateless
 public class AccountBeanImpl implements AccountBean{
 
     @PersistenceContext(unitName = "JTA-PU")
@@ -44,4 +46,3 @@ public class AccountBeanImpl implements AccountBean{
         }
     }
 }
-
