@@ -73,7 +73,7 @@ public class UserBeanImpl implements UserBean {
     }
 
     @Override
-    @TransactionAttribute(TransactionAttributeType.REQUIRES_NEW)
+    @TransactionAttribute(TransactionAttributeType.SUPPORTS)
     public void transfer(Long fromAccountNo, Long toAccountNo, BigDecimal amount) {
         EntityTransaction transaction = em.getTransaction();
         System.out.println("transfer() called :"+System.identityHashCode(transaction));

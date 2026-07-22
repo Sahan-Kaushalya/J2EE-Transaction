@@ -18,7 +18,7 @@ public class AccountBeanImpl implements AccountBean{
     private EntityManager em;
 
     @Override
-    @TransactionAttribute(TransactionAttributeType.REQUIRES_NEW)
+    @TransactionAttribute(TransactionAttributeType.REQUIRED)
     public void creditAmount(Long accountNo, BigDecimal amount) {
         EntityTransaction transaction = em.getTransaction();
         System.out.println("creditAmount() called :"+System.identityHashCode(transaction));
@@ -38,7 +38,7 @@ public class AccountBeanImpl implements AccountBean{
     }
 
     @Override
-    @TransactionAttribute(TransactionAttributeType.REQUIRES_NEW)
+    @TransactionAttribute(TransactionAttributeType.REQUIRED)
     public void debitAmount(Long accountNo, BigDecimal amount) {
         EntityTransaction transaction = em.getTransaction();
         System.out.println("debitAmount() called :"+System.identityHashCode(transaction));
